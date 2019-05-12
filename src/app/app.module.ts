@@ -12,25 +12,25 @@ import 'hammerjs';
 import { Lead } from 'app/app.component';
 
 import { HttpModule } from '@angular/http';
-import { MatSnackBarModule } from "@angular/material";
+import { MatSnackBarModule } from '@angular/material';
 import { ImageCropperModule } from 'ngx-image-cropper';
-
 import { AppRoutingModule } from './app-routing.module';
+import { TestModule } from 'areas/lead-test/public_api';
 
 
 
 @NgModule({
     declarations: [
-        Lead
+        Lead,
     ],
     imports     : [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        HttpModule ,
+        HttpModule,
         MatSnackBarModule,
         MatProgressBarModule,
-    MatProgressSpinnerModule,
+        MatProgressSpinnerModule,
 //        RouterModule.forRoot(appRoutes),
    //     AccountModule,
         TranslateModule.forRoot(),
@@ -41,16 +41,19 @@ import { AppRoutingModule } from './app-routing.module';
 
         // Material
         MatButtonModule,
-        MatIconModule
+        MatIconModule,
+        TestModule,
+
         
-        ,AppRoutingModule //routing module should be at end
+AppRoutingModule // routing module should be at end
         
         ],
-    exports:[MatProgressBarModule,
+    exports: [MatProgressBarModule,
         MatProgressSpinnerModule],
     providers: [
             MatProgressBarModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+    
           ],
     bootstrap   :[
         Lead

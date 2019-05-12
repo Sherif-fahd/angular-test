@@ -1,2 +1,2 @@
-export * from './lib/lead-test.service';
-export * from './lib/lead-test.module';
+export * from './lib/test/test.module';
+export * from './task.service';

@@ -1,0 +1,78 @@
+<div mat-dialog-content>
+    <div class="container">
+        <h1 mat-dialog-title>add your's</h1>
+        <form (ngSubmit)="onSubmit(pumpForm)" #pumpForm="ngForm" mat-form-field>
+            <div class="form-group">
+                <label for="name">ID</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    id="pumpId"
+                    required
+                    [(ngModel)]="data.Id"
+                    name="pumpId"
+                    #pumpId="ngModel"
+                />
+                <div
+                    *ngIf="pumpId.invalid && (pumpId.dirty || pumpId.touched)"
+                    class="alert alert-danger"
+                >
+                    ID is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    required
+                    [(ngModel)]="data.Name"
+                    name="name"
+                    #name="ngModel"
+                />
+                <div
+                    *ngIf="name.invalid && (name.dirty || name.touched)"
+                    class="alert alert-danger"
+                >
+                    Name is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="TankRemainedCapacity">TankRemainedCapacity</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    id="TankRemainedCapacity"
+                    required
+                    [(ngModel)]="data.TankRemainedCapacity"
+                    name="TankRemainedCapacity"
+                    #TankRemainedCapacity="ngModel"
+                />
+                <div
+                    *ngIf="name.invalid && (name.dirty || name.touched)"
+                    class="alert alert-danger"
+                >
+                    TankRemainedCapacity is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="TankTotalCapacity">TankTotalCapacity</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="TankTotalCapacity"
+                    required [(ngModel)]="data.TankTotalCapacity" name="TankTotalCapacity" #TankTotalCapacity="ngModel" />
+                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                    TankTotalCapacity is required
+                </div>
+            </div>
+                <button type="submit"class="btn btn-success" [disabled]="submitting">Submit</button>
+            <button (click)="cancel()"> Cancel</button>
+            <div *ngIf="error" class="alert alert-danger">
+                {{ error }}
+            </div>
+        </form>
+    </div>
+</div>

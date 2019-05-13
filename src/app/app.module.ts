@@ -22,6 +22,7 @@ import { TestModule } from 'areas/lead-test/public_api';
 @NgModule({
     declarations: [
         Lead,
+      
     ],
     imports     : [
         BrowserModule,

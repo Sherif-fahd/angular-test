@@ -1,0 +1,24 @@
+<mat-card class="card" >
+    <mat-card-header>
+      <div mat-card-avatar class="header-image"></div>
+      <mat-card-title ></mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+        <p>{{'demo.title' | translate}}</p>
+        <p>{{'demo.text' | translate}}</p>
+
+    </mat-card-content>
+    <mat-card-actions>
+        
+            <label>
+                    change
+                    <select #langSelect (change)="changeLang(langSelect.value)">
+                      <option *ngFor="let lang of langs" [value]="lang">
+                        {{ lang }}
+                      </option>
+                    </select>
+                  </label>
+    </mat-card-actions>
+  </mat-card>

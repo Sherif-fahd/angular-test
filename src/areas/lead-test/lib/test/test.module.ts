@@ -10,12 +10,15 @@ import { MatProgressSpinnerModule,
      MatMenuModule,
      MatButtonModule,
      MatCardModule,
+     MatProgressBarModule,
    } from '@angular/material';
 import { TaskService } from 'areas/lead-test/task.service';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateTestComponent } from '../components/translate-test/translate-test.component';
 
 
 @NgModule({
@@ -48,14 +51,14 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
     Material.MatPaginatorModule,
     Material.MatSortModule,
     Material.MatDialogModule,
-    TranslateModule.forRoot({
-        loader: {
-            provide: TranslateLoader,
-            useFactory: HttpLoaderFactory,
-            deps: [HttpClient]
-
-        }
-    })
+    MatProgressBarModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            }
+        })
    
 
 
@@ -64,12 +67,13 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
   exports: [
     ListPumpComponent,
     SavePumpsComponent,
-    TranslateModule
+    TranslateModule,
+    TranslateTestComponent
 
   ],
 
   entryComponents: [ SavePumpsComponent],
-  declarations: [ListPumpComponent, SavePumpsComponent],
+  declarations: [ListPumpComponent, SavePumpsComponent, TranslateTestComponent],
   providers: [
     TaskService
     ],
@@ -77,5 +81,6 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 export class TestModule { }
 
 // tslint:disable-next-line: typedef
-export function HttpLoaderFactory(http: HttpClient) {
-  } 
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, './lib/i18n/', '.json');
+  }

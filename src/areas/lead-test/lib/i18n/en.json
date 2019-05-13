@@ -1,4 +1,6 @@
 {
-    "Title": "Translation example",
-    "Intro": "Hello I am {{name}}, I am {{age}} years old."
+    "demo": {
+        "title": "Translation demo",
+        "text": "This is a simple demonstration app for ngx-translate"
+    }
 }

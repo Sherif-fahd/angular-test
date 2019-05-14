@@ -2,4 +2,17 @@
 
 <!-- <app-translate-test></app-translate-test> -->
 <app-list-pump></app-list-pump>
+<div>
+    <h1>{{ 'demo.title' | translate }}</h1>
+    <h2>{{ 'demo.text' | translate }}</h2>
+</div>
+
+<label>
+    change
+    <select #langSelect (change)="changeLang(langSelect.value)">
+      <option *ngFor="let lang of langs" [value]="lang">
+        {{ lang }}
+      </option>
+    </select>
+  </label>
 <router-outlet></router-outlet>

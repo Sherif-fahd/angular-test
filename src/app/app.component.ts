@@ -2,7 +2,7 @@ import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Platform } from '@angular/cdk/platform';
 import { TranslateService } from '@ngx-translate/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 
@@ -20,11 +20,12 @@ export class Lead implements OnInit, OnDestroy
 
     // Private
     private _unsubscribeAll: Subject<any>;
+    langs: string[] = [];
 
 
     constructor(
         @Inject(DOCUMENT) private document: any,
-        private _translateService: TranslateService,
+        private translateService: TranslateService,
         private _router: Router,
         private _platform: Platform,
         private _http: HttpClient,
@@ -40,6 +41,8 @@ export class Lead implements OnInit, OnDestroy
         this._unsubscribeAll = new Subject();
 
         ///Lead-Test : ROut to your module here!
+        
+
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -51,8 +54,14 @@ export class Lead implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        
+        this.translateService.setDefaultLang('en');
+        this.translateService.use('en');
+        this.translateService.addLangs(['en', 'de']);
+        this.langs = this.translateService.getLangs();
 
+        }
+        changeLang(lang: string): Observable<string>{
+         return   this.translateService.use(lang);
         }
 
     /**
